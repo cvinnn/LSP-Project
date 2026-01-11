@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LSP Project - Sistem Manajemen Perpustakaan
 
 Aplikasi web untuk mengelola katalog buku dan tracking peminjaman di perpustakaan. Sistem dibagi menjadi dua peran pengguna: **Admin (Petugas)** yang mengelola data dan **Member (Anggota)** yang meminjam buku. Dibangun dengan Laravel 12, MySQL, dan Tailwind CSS.
@@ -706,3 +707,6 @@ php artisan test --coverage
 - **Code Examples:** Lihat method-method di `LibraryService` untuk contoh business logic
 
 ---
+=======
+# LSP-Project
+>>>>>>> fb4d50e25fa2b335a34bae4ed3a71803a717bcc9

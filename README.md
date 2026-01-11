@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # LSP Project - Sistem Manajemen Perpustakaan
 
 Aplikasi web untuk mengelola katalog buku dan tracking peminjaman di perpustakaan. Sistem dibagi menjadi dua peran pengguna: **Admin (Petugas)** yang mengelola data dan **Member (Anggota)** yang meminjam buku. Dibangun dengan Laravel 12, MySQL, dan Tailwind CSS.
@@ -33,59 +32,12 @@ Pengguna dibagi menjadi dua peran:
 
 ---
 
-## 3. Diagram & Pemodelan
-
-**Entity-Relationship Diagram (ERD):**
-- File: `ERD-LSP.drawio.xml`
-- Entitas: `users` (admin/member), `books` (katalog buku), `borrowings` (transaksi peminjaman)
-- Relasi:
-  - `borrowings.user_id` → `users.id` (1 user bisa punya banyak peminjaman)
-  - `borrowings.book_id` → `books.id` (1 buku bisa dipinjam oleh banyak member)
-
-**Use Case:**
-- **Admin:** CRUD buku, catat peminjaman, catat pengembalian, kelola anggota, lihat laporan
-- **Member:** Lihat katalog buku, lihat riwayat peminjaman pribadi
-
-**Class Diagram (Sederhana):**
-```
-Controller → Service → Model
-   ↓           ↓         ↓
-BookController → LibraryService → Book
-BorrowingController → LibraryService → Borrowing
-UserController → LibraryService → User
-```
-
-**Component Diagram:**
-```
-UI (Blade Templates + Tailwind CSS) 
-  ↔ Controller 
-  ↔ Service (Business Logic)
-  ↔ Model (Eloquent ORM)
-  ↔ Database (MySQL)
-```
-
----
-
-## 4. Lingkungan Pengembangan
-
-| Aspek | Teknologi |
-|-------|-----------|
-| **IDE** | Visual Studio Code |
-| **Runtime** | Laragon / XAMPP (PHP 8.2+) |
-| **Backend Framework** | Laravel 12 |
-| **Database** | MySQL |
-| **Frontend** | Blade Templates + Tailwind CSS 4.0 |
-| **Build Tool** | Vite 7.0.7 |
-| **Testing** | PHPUnit 11.5+ |
-
----
-
-## 5. Fitur Utama
+## 3. Fitur Utama
 
 ### A. Katalog Buku
 - Menampilkan daftar semua buku dengan detail (judul, penulis, ISBN, deskripsi, stok)
 - Pencarian buku berdasarkan judul, penulis, atau ISBN
-- **Stock Alerts** - Warning visual (🔴) ketika stok tinggal 1 copy
+- **Stock Alerts** - Warning visual ketika stok tinggal 1 copy
 
 ### B. Manajemen Buku (Admin Only)
 - **Tambah Buku** - Input form dengan validasi ISBN unik (13 digit)
@@ -146,7 +98,7 @@ UI (Blade Templates + Tailwind CSS)
 
 ---
 
-## 6. Coding Guidelines dan Best Practices
+## 4. Coding Guidelines dan Best Practices
 
 **Struktur MVC Laravel:**
 ```
@@ -170,7 +122,7 @@ Routes (web.php)
 
 ---
 
-## 7. Error Handling
+## 5. Error Handling
 
 **Validasi Input:**
 - Error validasi ditampilkan di layout melalui session errors
@@ -188,10 +140,10 @@ Routes (web.php)
 
 ---
 
-## 8. Ukuran Performa
+## 6. Ukuran Performa
 
 Pengukuran lokal menggunakan Laravel Debugbar (optional):
-- Response time rata-rata: 300 ms - 1 detik
+- Response time rata-rata: 195 ms - 1 detik
 - Performa tergantung jumlah data dan spesifikasi komputer
 
 **Tips Optimasi:**
@@ -200,7 +152,7 @@ Pengukuran lokal menggunakan Laravel Debugbar (optional):
 
 ---
 
-## 9. Tipe Data dan Struktur Kontrol
+## 7. Tipe Data dan Struktur Kontrol
 
 **Tipe Data:**
 - `string`: nama, judul, penulis, email
@@ -215,7 +167,7 @@ Pengukuran lokal menggunakan Laravel Debugbar (optional):
 
 ---
 
-## 10. Program Sederhana, Prosedur/Fungsi, Array, Akses File
+## 8. Program Sederhana, Prosedur/Fungsi, Array
 
 **Input/Output:**
 - Input: HTML form (login, tambah buku, catat peminjaman)
@@ -230,15 +182,9 @@ Pengukuran lokal menggunakan Laravel Debugbar (optional):
 - Seeder data (DatabaseSeeder.php) menggunakan array untuk daftar buku
 - Response API menggunakan array untuk multiple records
 
-**Akses File:**
-- Laravel menyimpan log di `storage/logs/laravel.log`
-- Session files di `storage/framework/sessions/`
-- Cache di `storage/framework/cache/`
-- Proyek ini tidak menggunakan file upload khusus
-
 ---
 
-## 11. Pemrograman Berorientasi Objek
+## 9. Pemrograman Berorientasi Objek
 
 **Class & Object:**
 - `BookController`, `UserController`, `BorrowingController` - Class controller
@@ -262,14 +208,9 @@ class BookController {
 - `protected`: Dapat diakses dari class dan child class
 - `private`: Hanya dapat diakses dalam class yang sama
 
-**Inheritance:**
-- Controller mewarisi `BaseController` untuk error handling
-- Model mewarisi `BaseModel` untuk common functionality
-- Service inheritance structure untuk reusable methods
-
 ---
 
-## 12. Akses Basis Data
+## 10. Akses Basis Data
 
 **CRUD via Eloquent ORM:**
 ```php
@@ -301,11 +242,7 @@ $book->delete();
 
 ---
 
-## 13. Pengujian dan Debugging
-
-**Unit Testing:**
-- Test untuk model logic: `tests/Unit/BookModelTest.php`, `tests/Unit/UserModelTest.php`
-- Menggunakan PHPUnit assertions
+## 11. Pengujian dan Debugging
 
 **Feature Testing:**
 - Test untuk controller & routes: `tests/Feature/BookControllerTest.php`, `tests/Feature/BorrowingControllerTest.php`
@@ -323,7 +260,7 @@ $book->delete();
 
 ---
 
-## 14. Dokumentasi Teknis
+## 12. Dokumentasi Teknis
 
 ### BookController
 ```php
@@ -383,103 +320,21 @@ toggleUserPermission($user) // Block/allow member
 - isOverdue() method
 - isLate() method
 ```
+---
+
+## 13. Reuse Komponen dan Library
+
+- Laravel
+- Debugbar(optional)
 
 ---
 
-## 15. Struktur Folder & File
-
-```
-LSP Project/
-├── app/
-│   ├── Exceptions/
-│   │   └── AppExceptions.php       # Custom exceptions
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   │   ├── AuthController.php
-│   │   │   ├── BookController.php
-│   │   │   ├── BorrowingController.php
-│   │   │   ├── UserController.php
-│   │   │   └── BaseController.php
-│   │   └── Middleware/
-│   │       └── IsAdmin.php
-│   ├── Models/
-│   │   ├── User.php
-│   │   ├── Book.php
-│   │   ├── Borrowing.php
-│   │   └── BaseModel.php
-│   ├── Services/
-│   │   └── LibraryService.php      # Business logic
-│   └── Traits/
-│       └── AppTraits.php
-├── database/
-│   ├── migrations/
-│   │   ├── ...create_users_table
-│   │   ├── ...create_books_table
-│   │   ├── ...create_borrowings_table
-│   │   └── ...add_can_borrow_to_users
-│   ├── factories/
-│   │   └── UserFactory.php
-│   └── seeders/
-│       └── DatabaseSeeder.php
-├── resources/
-│   ├── views/
-│   │   ├── auth/          # Login & register
-│   │   ├── books/         # Book management
-│   │   ├── borrowings/    # Borrowing management
-│   │   ├── members/       # Member management (users)
-│   │   ├── layouts/       # Layout templates
-│   │   └── users/         # User profiles
-│   ├── css/
-│   │   └── app.css
-│   └── js/
-│       └── app.js
-├── routes/
-│   ├── web.php           # All routes
-│   └── console.php
-├── tests/
-│   ├── Unit/             # Unit tests
-│   ├── Feature/          # Feature tests
-│   └── TestCase.php
-├── config/
-│   ├── app.php          # App configuration
-│   ├── database.php     # Database configuration
-│   ├── auth.php         # Authentication
-│   └── ...
-├── storage/
-│   ├── logs/            # Log files
-│   └── framework/       # Cache & sessions
-├── .env                 # Environment variables
-├── .env.example         # Example env
-├── composer.json        # PHP dependencies
-├── package.json         # JavaScript dependencies
-├── phpunit.xml          # PHPUnit configuration
-├── README.md            # This file
-└── ERD-LSP.drawio.xml  # Database diagram
-```
-
----
-
-## 16. Reuse Komponen dan Library
-
-**Framework & Libraries:**
-- **Laravel 12**: PHP framework untuk web development
-- **Tailwind CSS 4.0**: Utility-first CSS framework (via CDN)
-- **Vite**: Modern build tool untuk frontend assets
-- **Eloquent ORM**: Database abstraction layer
-- **PHPUnit**: Testing framework
-
-**Lisensi:**
-- Semua dependencies digunakan sesuai lisensi open-source masing-masing (MIT, Apache 2.0, etc.)
-- Project ini dibuat untuk keperluan pembelajaran/pengembangan
-
----
-
-## 17. Setup & Menjalankan Aplikasi
+## 14. Setup & Menjalankan Aplikasi
 
 ### Prerequisites
 - PHP 8.2+
 - Composer
-- MySQL (via XAMPP/Laragon)
+- MySQL (via XAMPP)
 - Node.js & npm
 - Laravel 12 compatible
 
@@ -531,36 +386,25 @@ DB_PASSWORD=
 composer require barryvdh/laravel-debugbar --dev
 ```
 Pastikan `APP_DEBUG=true` di `.env`
-
-**Laravel Pail** - Untuk tail logs real-time:
-```bash
-php artisan pail
 ```
 
 ---
 
-## 18. Login Demo
+## 15. Login Demo
 
 ### Admin Account
-- **Email:** `admin@library.com`
-- **Password:** `password`
-- **Akses:** CRUD buku, catat peminjaman, manajemen anggota
+- Email: `admin@library.com`
+- Password: `password`
+- Akses: CRUD buku, catat peminjaman, manajemen anggota
 
-### Member Test Accounts
-Semua password: `password`
-
-| Email | Nama | Status |
-|-------|------|--------|
-| `donnie.fay@example.com` | Lauretta Jerde DDS | 1 active borrow |
-| `corrine.stoltenberg@example.org` | Melody Hettinger I | 1 OVERDUE (2 hari) |
-| `ora.romaguera@example.com` | Nicholas Bednar | Returned ON-TIME |
-| `denesik.william@example.org` | Ambrose Balistreri | Returned ON-TIME |
-| `ohermann@example.net` | Jeremie Bins | 1 OVERDUE (5 hari) |
-| `test@example.com` | Test User | 1 active borrow |
+### Test Account
+- Email: `test@example.com`
+- Password: `password`
+- Akses: view list buku
 
 ---
 
-## 19. Struktur Database
+## 16. Struktur Database
 
 ### Users Table
 ```sql
@@ -602,7 +446,7 @@ updated_at
 
 ---
 
-## 20. Validasi & Business Logic
+## 17. Validasi & Business Logic
 
 ### Book Validations
 - **Title:** required, max 255 characters
@@ -614,7 +458,7 @@ updated_at
 ### Borrowing Validations
 - **user_id:** required, exists in users table, user.can_borrow = true
 - **book_id:** required, exists in books table, available > 0
-- **borrow_date:** required, date format (user dapat input custom)
+- **borrow_date:** required(automatic), date format (user dapat input custom)
 - **due_date:** auto calculated (borrow_date + 7 hari)
 - Tidak bisa record peminjaman untuk member yang blocked
 
@@ -632,74 +476,13 @@ updated_at
 - Return reminder untuk due date ≤ 3 hari ke depan
 - Tidak bisa delete buku jika ada borrowing aktif
 - Tidak bisa return buku yang sudah dikembalikan
-- **Borrow_date immutable:** Tidak bisa diubah setelah record dibuat
+- **Borrow_date immutable:** Tidak bisa diubah
 - OVERDUE: status='borrowed' dan today > due_date
 - LATE: status='returned' dan return_date > due_date
 
 ---
 
-## 21. Running Tests
-
-```bash
-# Run semua tests
-php artisan test
-
-# Run specific test file
-php artisan test tests/Feature/BookControllerTest.php
-
-# Run dengan verbose output
-php artisan test --verbose
-
-# Run dengan coverage report
-php artisan test --coverage
-```
-
-**Test Coverage mencakup:**
-- Authentication & Authorization tests
-- CRUD operation tests
-- Validation tests
-- Business logic tests (overdue detection, stock tracking)
-
----
-
-## 22. Tech Stack
-
-| Layer | Teknologi |
-|-------|-----------|
-| **Backend Framework** | Laravel 12 (PHP 8.2+) |
-| **Database** | MySQL via XAMPP |
-| **ORM** | Eloquent |
-| **Frontend** | Blade Templates + Tailwind CSS 4.0 |
-| **Build Tool** | Vite 7.0.7 |
-| **Testing** | PHPUnit 11.5+, Laravel Testing Utilities |
-| **Authentication** | Laravel built-in Auth |
-| **Server (Dev)** | PHP built-in server |
-| **Version Control** | Git |
-
----
-
-## 23. Troubleshooting
-
-### Common Issues
-
-**Error: "SQLSTATE[HY000]: General error"**
-- Solusi: Jalankan `php artisan migrate:fresh --seed`
-
-**Error: "Class not found"**
-- Solusi: Run `composer dump-autoload`
-
-**Assets tidak ter-load (CSS/JS tidak berfungsi)**
-- Solusi: Jalankan `npm run build` atau `npm run dev` dalam terminal baru
-
-**Port 3000 sudah digunakan**
-- Solusi: Gunakan port lain: `php artisan serve --port=8000`
-
-**Database tidak terhubung**
-- Solusi: Pastikan `.env` configuration sesuai dan MySQL running di XAMPP
-
----
-
-## 24. Dokumentasi Lebih Lanjut
+## 19. Dokumentasi Lebih Lanjut
 
 - **ERD Diagram:** `ERD-LSP.drawio.xml` - Visualisasi database schema
 - **Blade Templates:** `resources/views/` - UI components dan layouts
@@ -707,6 +490,3 @@ php artisan test --coverage
 - **Code Examples:** Lihat method-method di `LibraryService` untuk contoh business logic
 
 ---
-=======
-# LSP-Project
->>>>>>> fb4d50e25fa2b335a34bae4ed3a71803a717bcc9

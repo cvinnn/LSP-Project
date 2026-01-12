@@ -100,44 +100,4 @@ class AuthController extends BaseController
         $request->session()->regenerateToken();
         return redirect()->route('login')->with('success', 'You have been logged out.');
     }
-
-    /**
-     * Show password reset form
-     */
-    public function showResetPassword()
-    {
-        return view('auth.reset-password');
-    }
-
-    /**
-     * Update user password
-     */
-    public function updatePassword(Request $request)
-    {
-        try {
-            $validated = $request->validate([
-                'current_password' => 'required',
-                'password' => 'required|min:8|confirmed',
-            ], [
-                'password.confirmed' => 'The new password confirmation does not match.',
-            ]);
-
-            $user = Auth::user();
-
-            // Check current password
-            if (!Hash::check($validated['current_password'], $user->password)) {
-                return back()->withErrors(['current_password' => 'Current password is incorrect.']);
-            }
-
-            // Update password
-            $user->update([
-                'password' => Hash::make($validated['password']),
-            ]);
-
-            $this->logAction('User changed password: ' . $user->email);
-            return redirect()->route('books.index')->with('success', 'Password updated successfully!');
-        } catch (\Exception $e) {
-            return $this->handleError($e, 'reset-password', 'Error updating password');
-        }
-    }
 }

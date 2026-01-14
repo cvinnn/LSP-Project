@@ -83,6 +83,7 @@ class DatabaseSeeder extends Seeder
             'author' => 'F. Scott Fitzgerald',
             'isbn' => '9780743273565',
             'description' => 'A classic American novel about wealth and love in the Jazz Age.',
+            'cover_image' => 'https://www.gutenberg.org/cache/epub/64317/pg64317.cover.medium.jpg',
             'quantity' => 3,
             'available' => 2,
         ]);
@@ -92,6 +93,7 @@ class DatabaseSeeder extends Seeder
             'author' => 'Harper Lee',
             'isbn' => '9780061120084',
             'description' => 'A gripping tale of racial injustice in the American South.',
+            'cover_image' => 'https://ebooks.gramedia.com/ebook-covers/25313/image_highres/HCO_TKAM2018MTH11.jpeg',
             'quantity' => 4,
             'available' => 3,
         ]);
@@ -101,6 +103,7 @@ class DatabaseSeeder extends Seeder
             'author' => 'George Orwell',
             'isbn' => '9780451524935',
             'description' => 'A dystopian novel about totalitarianism and surveillance.',
+            'cover_image' => 'https://m.media-amazon.com/images/M/MV5BMTA1NDQ3NTcyOTNeQTJeQWpwZ15BbWU3MDA0MzA4MzE@._V1_.jpg',
             'quantity' => 4,
             'available' => 4,
         ]);
@@ -110,6 +113,7 @@ class DatabaseSeeder extends Seeder
             'author' => 'Jane Austen',
             'isbn' => '9780141040387',
             'description' => 'A romantic novel about family, marriage, and social class.',
+            'cover_image' => 'https://bci.kinokuniya.com/jsp/images/book-img/97801/97801410/9780141036144.JPG',
             'quantity' => 2,
             'available' => 2,
         ]);
@@ -119,6 +123,7 @@ class DatabaseSeeder extends Seeder
             'author' => 'J.D. Salinger',
             'isbn' => '9780316769174',
             'description' => 'A coming-of-age story following a teenage boy in New York.',
+            'cover_image' => 'https://upload.wikimedia.org/wikipedia/commons/8/89/The_Catcher_in_the_Rye_%281951%2C_first_edition_cover%29.jpg',
             'quantity' => 3,
             'available' => 2,
         ]);
@@ -186,4 +191,3 @@ class DatabaseSeeder extends Seeder
         ]);
     }
 }
-

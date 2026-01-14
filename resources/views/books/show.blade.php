@@ -5,6 +5,16 @@
 @section('content')
 <div class="bg-white rounded-lg shadow-lg p-8 max-w-2xl">
     <h2 class="text-4xl font-bold text-gray-800 mb-4">{{ $book->title }}</h2>
+
+    <div class="mb-6">
+        @if ($book->cover_image)
+            <img src="{{ $book->cover_image }}" alt="Cover of {{ $book->title }}" class="w-48 h-64 object-cover rounded shadow">
+        @else
+            <div class="w-48 h-64 bg-gray-100 rounded flex items-center justify-center text-gray-400 text-sm">
+                No Cover
+            </div>
+        @endif
+    </div>
     
     <div class="mb-6">
         <p class="text-lg mb-2"><strong class="text-gray-700">Author:</strong> <span class="text-gray-600">{{ $book->author }}</span></p>

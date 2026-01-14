@@ -10,6 +10,13 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($books as $book)
                 <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center">
+                        @if ($book->cover_image)
+                            <img src="{{ $book->cover_image }}" alt="Cover of {{ $book->title }}" class="h-full w-full object-cover">
+                        @else
+                            <span class="text-gray-400 text-sm">No Cover</span>
+                        @endif
+                    </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">{{ $book->title }}</h3>
                         <p class="text-gray-600 mb-1"><strong>Author:</strong> {{ $book->author }}</p>

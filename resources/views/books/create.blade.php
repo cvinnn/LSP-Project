@@ -68,6 +68,15 @@
             @enderror
         </div>
 
+        <div class="mb-6">
+            <label for="cover_image" class="block text-gray-700 font-bold mb-2">Book Cover URL</label>
+            <input type="url" id="cover_image" name="cover_image" value="{{ old('cover_image') }}" class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-600" placeholder="https://...">
+            <p class="text-gray-500 text-xs mt-1">Optional, harus berakhir .jpg/.jpeg/.png/.gif/.webp</p>
+            @error('cover_image')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+
         <div class="flex gap-4">
             <button type="submit" class="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700">Add Book</button>
             <a href="{{ route('books.index') }}" class="bg-gray-600 text-white py-2 px-6 rounded hover:bg-gray-700">Cancel</a>

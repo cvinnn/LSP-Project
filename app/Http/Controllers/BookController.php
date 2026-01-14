@@ -77,12 +77,14 @@ class BookController extends BaseController
                 'author' => 'required|string|max:255',
                 'isbn' => 'required|unique:books|numeric|digits:13',
                 'description' => 'required|string|min:10',
+                'cover_image' => ['nullable', 'url', 'max:2048', 'regex:/\.(jpe?g|png|gif|webp)(\?.*)?$/i'],
                 'quantity' => 'required|integer|min:1',
             ], [
                 'isbn.numeric' => 'ISBN must contain only numbers (0-9)',
                 'isbn.digits' => 'ISBN must be exactly 13 digits',
                 'description.required' => 'Description is required',
                 'description.min' => 'Description must be at least 10 characters',
+                'cover_image.regex' => 'Cover URL must end with jpg, jpeg, png, gif, or webp',
             ]);
 
             // Set available copies equal to quantity for new books
@@ -121,12 +123,14 @@ class BookController extends BaseController
                 'author' => 'required|string|max:255',
                 'isbn' => 'required|numeric|digits:13|unique:books,isbn,' . $book->id,
                 'description' => 'required|string|min:10',
+                'cover_image' => ['nullable', 'url', 'max:2048', 'regex:/\.(jpe?g|png|gif|webp)(\?.*)?$/i'],
                 'quantity' => 'required|integer|min:1',
             ], [
                 'isbn.numeric' => 'ISBN must contain only numbers (0-9)',
                 'isbn.digits' => 'ISBN must be exactly 13 digits',
                 'description.required' => 'Description is required',
                 'description.min' => 'Description must be at least 10 characters',
+                'cover_image.regex' => 'Cover URL must end with jpg, jpeg, png, gif, or webp',
             ]);
 
             // Hitung berapa buku yang sedang dipinjam
@@ -145,7 +149,7 @@ class BookController extends BaseController
             // Update quantity dan available
             // Jika quantity berubah, update available sesuai dengan buku yang dipinjam
             $validated['available'] = $validated['quantity'] - $borrowed;
-            
+
             $book->update($validated);
 
             \Log::info('Book updated: ' . $book->title . ' (quantity: ' . $validated['quantity'] . ', available: ' . $validated['available'] . ')');
